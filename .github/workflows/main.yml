@@ -35,4 +35,5 @@ jobs:
 
     steps:
     - name: use cache in job 2
-      run: cat ~/cache_file
+      run: |
+        cat ~/cache_file
