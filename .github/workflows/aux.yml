@@ -12,8 +12,6 @@ jobs:
     runs-on: ubuntu-20.04
 
     steps:
-    - name: Print out global env var from main
+    - name: See cache sharing with main
       run: |
-        echo $app
-        echo ${{env.app}}
-    
+        cat cache_file
