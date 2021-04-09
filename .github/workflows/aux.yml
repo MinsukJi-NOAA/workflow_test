@@ -15,4 +15,4 @@ jobs:
     - name: See cache sharing with main
       run: |
         echo "GITHUB_REF is $GITHUB_REF"
-        cat cache_file
+        cat ~/cache_file
