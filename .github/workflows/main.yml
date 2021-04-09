@@ -7,7 +7,7 @@ on:
     branches: ['master']
 
 env:
-  apiApp: "Accept: application/vnd.github.v3+json"
+  app: "Accept: application/vnd.github.v3+json"
 
 jobs:
   job1:
@@ -17,8 +17,9 @@ jobs:
     steps:
     - name: Print out global env var
       run: |
-        echo $apiApp
-        echo ${{ env.apiApp }}
+        echo $app
+        echo ${{ env.app }}
+        curl -sS -H $app https://api.github.com/repos/MinsukJi-NOAA/ufs-weather-model/pulls
 
   job2:
     name: job 2
@@ -27,5 +28,6 @@ jobs:
     steps:
     - name: Print out global env var
       run: |
-        echo $apiApp
-        echo ${{ env.apiApp }}
+        echo $app
+        echo ${{ env.app }}
+        curl -sS -H $app https://api.github.com/repos/MinsukJi-NOAA/ufs-weather-model/pulls
