@@ -12,19 +12,18 @@ jobs:
     runs-on: ubuntu-20.04
 
     steps:
-    - name: Print out global env var
-      run: |
-        echo "GITHUB_REF is $GITHUB_REF"
-        pwd
-        cd ~
-        pwd
-        echo "Hello, World!" > ~/cache_file
+    - uses: actions/checkout@v2
 
     - name: cache
+      id: cache-file
       uses: actions/cache@v2
       with:
         path: ~/cache_file
         key: main-cache
+
+    - name: generate cache file
+      if: steps.cache-file.outputs.cache-hit != 'true'
+      run: echo "Hello, World!" >> ~/cache_file
 
     - name: use cache
       run: cat cache_file
