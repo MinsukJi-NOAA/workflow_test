@@ -18,7 +18,6 @@ jobs:
     - name: Print out global env var
       run: |
         echo $app
-        echo ${{ env.app }}
         curl -sS -H $app https://api.github.com/repos/MinsukJi-NOAA/ufs-weather-model/pulls
 
   job2:
@@ -29,5 +28,4 @@ jobs:
     - name: Print out global env var
       run: |
         echo $app
-        echo ${{ env.app }}
         curl -sS -H $app https://api.github.com/repos/MinsukJi-NOAA/ufs-weather-model/pulls

@@ -1,0 +1,19 @@
+name: Aux workflow
+
+on:
+  workflow_run:
+    workflows: ["Main tests"]
+    types:
+      - requested
+
+jobs:
+  job1:
+    name: job 1
+    runs-on: ubuntu-20.04
+
+    steps:
+    - name: Print out global env var from main
+      run: |
+        echo $app
+        echo ${{env.app}}
+    
