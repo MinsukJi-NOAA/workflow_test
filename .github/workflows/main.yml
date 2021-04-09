@@ -28,4 +28,4 @@ jobs:
     - name: Print out global env var
       run: |
         echo $app
-        curl -sS -H $app https://api.github.com/repos/MinsukJi-NOAA/ufs-weather-model/pulls
+        curl -sS -H "$app" https://api.github.com/repos/MinsukJi-NOAA/ufs-weather-model/pulls
