@@ -4,7 +4,7 @@ on:
   workflow_run:
     workflows: ["Main tests"]
     types:
-      - requested
+      - completed
 
 jobs:
   job1:
