@@ -26,7 +26,7 @@ jobs:
       run: echo "Hello, World!" >> ~/cache_file
 
     - name: use cache
-      run: cat ~/cache_file
+      run: cat cache_file
 
   job2:
     name: job 2
@@ -36,4 +36,4 @@ jobs:
     steps:
     - name: use cache in job 2
       run: |
-        cat ~/cache_file
+        cat cache_file
