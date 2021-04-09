@@ -14,12 +14,15 @@ jobs:
     steps:
     - name: Print out global env var
       run: |
-        echo "Hello, World!" > cache_file
+        pwd
+        cd ~
+        pwd
+        echo "Hello, World!" > ~/cache_file
 
     - name: cache
       uses: actions/cache@v2
       with:
-        path: cache_file
+        path: ~/cache_file
         key: main-cache
 
     - name: use cache
