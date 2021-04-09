@@ -12,6 +12,12 @@ jobs:
     runs-on: ubuntu-20.04
 
     steps:
+    - name: cache
+      uses: actions/cache@v2
+      with:
+        path: cache_file
+        key: ${{runner.os}}
+
     - name: See cache sharing with main
       run: |
         echo "GITHUB_REF is $GITHUB_REF"
