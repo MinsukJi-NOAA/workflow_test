@@ -18,12 +18,12 @@ jobs:
       id: cache-file
       uses: actions/cache@v2
       with:
-        path: ~/cache_file
-        key: main-cache
+        path: cache_file
+        key: main-cache-2
 
     - name: generate cache file
       if: steps.cache-file.outputs.cache-hit != 'true'
-      run: echo "Hello, World!" >> ~/cache_file
+      run: echo "Hello, World!" >> cache_file
 
     - name: use cache
       run: cat cache_file
