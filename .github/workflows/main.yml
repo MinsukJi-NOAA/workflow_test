@@ -36,4 +36,8 @@ jobs:
     steps:
     - name: use cache in job 2
       run: |
+        pwd
+        ls -alF
+        cd ~
+        ls -alF
         cat cache_file
