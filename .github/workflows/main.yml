@@ -19,7 +19,7 @@ jobs:
       uses: actions/cache@v2
       with:
         path: cache_file
-        key: main-cache-2
+        key: ${{runner.os}}
 
     - name: generate cache file
       if: steps.cache-file.outputs.cache-hit != 'true'
@@ -36,8 +36,4 @@ jobs:
     steps:
     - name: use cache in job 2
       run: |
-        pwd
-        ls -alF
-        cd ~
-        ls -alF
         cat cache_file
