@@ -6,6 +6,9 @@ on:
   pull_request:
     branches: ['master']
 
+env:
+  app: "Accpet:application/vnd.github.v3+json"
+
 jobs:
   job1:
     name: job 1
@@ -43,3 +46,13 @@ jobs:
     - name: use cache in job 2
       run: |
         cat cache_file
+
+  job3:
+    name: job 3
+    runs-on: ubuntu-20.04
+    needs: job2
+
+    steps:
+    - name: post comment
+      run: |
+        curl -sS -X POST -H "Authorization: token ${{secrets.GITHUB_TOKEN}}" -H "$app" https://github.com/MinsukJi-NOAA/workflow_test/issues/1/comments -d '{"body": "Here is a post"}'
