@@ -43,7 +43,7 @@ jobs:
     needs: job1
 
     steps:
-      uses: actions/checkout@v2
+    - uses: actions/checkout@v2
 
     - name: set file second time
       run: echo "Hello world 2nd time" > cf
