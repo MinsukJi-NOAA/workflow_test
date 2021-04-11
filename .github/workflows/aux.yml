@@ -24,13 +24,5 @@ jobs:
     - name: See cache sharing with main
       run: |
         echo "GITHUB_REF is $GITHUB_REF"
-        cat cache_file
-
-  job2:
-    name: job 2
-    runs-on: ubuntu-20.04
-
-    steps:
-    - name: post comment
-      run: |
-        curl -sS -X POST -H "Authorization: token ${{secrets.GITHUB_TOKEN}}" -H "$app" https://api.github.com/repos/MinsukJi-NOAA/workflow_test/issues/1/comments -d '{"body": "Hello from aux"}'
+        comment2=$(cat cache_file)
+        curl -sS -X POST -H "Authorization: token ${{secrets.GITHUB_TOKEN}}" -H "$app" https://api.github.com/repos/MinsukJi-NOAA/workflow_test/issues/1/comments -d '{"body": "'"${comment2}"'"}'
