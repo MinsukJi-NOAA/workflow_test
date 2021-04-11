@@ -19,7 +19,7 @@ jobs:
       uses: actions/cache@v2
       with:
         path: cache_file
-        key: ${{runner.os}}
+        key: auto-comment
 
     - name: See cache sharing with main
       run: |

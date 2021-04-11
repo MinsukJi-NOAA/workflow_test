@@ -25,7 +25,7 @@ jobs:
       uses: actions/cache@v2
       with:
         path: cache_file
-        key: ${{runner.os}}
+        key: auto-comment
 
     - name: generate cache file
       if: steps.cache-file.outputs.cache-hit != 'true'
