@@ -21,10 +21,10 @@ jobs:
         path: comment_file
         key: auto-comment4
 
-    - name: See cache sharing with main
-      run: |
-        echo "GITHUB_REF is $GITHUB_REF"
-        cat comment_file
-        comment=$(cat comment_file)
-        echo $comment
-        curl -sS -X POST -H "Authorization: token ${{secrets.GITHUB_TOKEN}}" -H "$app" https://api.github.com/repos/MinsukJi-NOAA/workflow_test/issues/1/comments -d '{"body": "'"${comment}"'"}'
+#    - name: See cache sharing with main
+#      run: |
+#        echo "GITHUB_REF is $GITHUB_REF"
+#        cat comment_file
+#        comment=$(cat comment_file)
+#        echo $comment
+#        curl -sS -X POST -H "Authorization: token ${{secrets.GITHUB_TOKEN}}" -H "$app" https://api.github.com/repos/MinsukJi-NOAA/workflow_test/issues/2/comments -d '{"body": "'"${comment}"'"}'

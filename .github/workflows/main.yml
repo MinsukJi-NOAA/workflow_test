@@ -17,34 +17,55 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: cache
-      id: cache-file
+    - name: set file first time
+      run: echo "Hello world 1st time" > cf
+
+    - name: cache 1
+      id: cache-file-1
       uses: actions/cache@v2
       with:
-        path: comment_file
-        key: auto-comment4
+        path: cf
+        key: 20210411-1
 
-    - name: generate cache file
-      if: steps.cache-file.outputs.cache-hit != 'true'
-      run: |
-        comment="This is extensive commit message\n\n* item 1;\n* item 2;\n* item 3"
-        printf %s "$comment" > comment_file
+    - name: set file second time
+      run: echo "Hello world 2nd time" > cf
 
-    - name: use cache
-      run: cat comment_file
+    - name: cache 2
+      id: cache-file-2
+      uses: actions/cache@v2
+      with:
+        path: cf
+        key: 20210411-2
 
-#  job2:
-#    name: job 2
-#    runs-on: ubuntu-20.04
-#    needs: job1
-#
-#    steps:
-#    - name: cache
-#      uses: actions/cache@v2
-#      with:
-#        path: cache_file
-#        key: ${{runner.os}}
-#
-#    - name: use cache in job 2
+#    - name: generate cache file
+#      if: steps.cache-file.outputs.cache-hit != 'true'
 #      run: |
-#        cat cache_file
+#        comment="This is extensive commit message\n\n* item 1;\n* item 2;\n* item 3"
+#        printf %s "$comment" > comment_file
+#
+#    - name: use cache
+#      run: cat comment_file
+
+  job2:
+    name: job 2
+    runs-on: ubuntu-20.04
+    needs: job1
+
+    steps:
+    - name: cache 1
+      uses: actions/cache@v2
+      with:
+        path: cf
+        key: 20210411-1
+
+    - name: use cache 1
+      run: cat cf
+
+    - name: cache 2
+      uses: actions/cache@v2
+      with:
+        path: cf
+        key: 20210411-2
+
+    - name: use cache 2
+      run: cat cf
