@@ -33,4 +33,4 @@ jobs:
     steps:
     - name: post comment
       run: |
-        curl -sS -X POST -H "Authorization: token ${{secrets.GITHUB_TOKEN}}" -H "$app" https://api.github.com/repos/MinsukJi-NOAA/workflow_test/issues/1/comments -d '{"body": "Here is a post"}'
+        curl -sS -X POST -H "Authorization: token ${{secrets.GITHUB_TOKEN}}" -H "$app" https://api.github.com/repos/MinsukJi-NOAA/workflow_test/issues/1/comments -d '{"body": "Hello from aux"}'

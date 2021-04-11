@@ -46,3 +46,12 @@ jobs:
     - name: use cache in job 2
       run: |
         cat cache_file
+
+  job3:
+    name: job 3
+    runs-on: ubuntu-20.04
+
+    steps:
+    - name: post comment
+      run: |
+        curl -sS -X POST -H "Authorization: token ${{secrets.GITHUB_TOKEN}}" -H "$app" https://api.github.com/repos/MinsukJi-NOAA/workflow_test/issues/1/comments -d '{"body": "Hello from main"}'
