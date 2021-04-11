@@ -6,6 +6,9 @@ on:
     types:
       - completed
 
+env:
+  app: "Accept:application/vnd.github.v3+json"
+
 jobs:
   job1:
     name: job 1
@@ -22,3 +25,12 @@ jobs:
       run: |
         echo "GITHUB_REF is $GITHUB_REF"
         cat cache_file
+
+  job2:
+    name: job 2
+    runs-on: ubuntu-20.04
+
+    steps:
+    - name: post comment
+      run: |
+        curl -sS -X POST -H "Authorization: token ${{secrets.GITHUB_TOKEN}}" -H "$app" https://api.github.com/repos/MinsukJi-NOAA/workflow_test/issues/1/comments -d '{"body": "Here is a post"}'
