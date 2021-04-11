@@ -17,19 +17,18 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: generate comments
-      run: comment="This is extensive commit message\n\n* item 1;\n* item 2;\n* item 3"
-
     - name: cache
       id: cache-file
       uses: actions/cache@v2
       with:
         path: cache_file
-        key: auto-comment
+        key: auto-comment2
 
     - name: generate cache file
       if: steps.cache-file.outputs.cache-hit != 'true'
-      run: printf %s "$comment" >> cache_file
+      run: |
+        printf %s "$comment" >> cache_file
+        comment="This is extensive commit message\n\n* item 1;\n* item 2;\n* item 3"
 
     - name: use cache
       run: cat cache_file

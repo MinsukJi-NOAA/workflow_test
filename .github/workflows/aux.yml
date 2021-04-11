@@ -19,10 +19,11 @@ jobs:
       uses: actions/cache@v2
       with:
         path: cache_file
-        key: auto-comment
+        key: auto-comment2
 
     - name: See cache sharing with main
       run: |
         echo "GITHUB_REF is $GITHUB_REF"
-        comment2=$(cat cache_file)
-        curl -sS -X POST -H "Authorization: token ${{secrets.GITHUB_TOKEN}}" -H "$app" https://api.github.com/repos/MinsukJi-NOAA/workflow_test/issues/1/comments -d '{"body": "'"${comment2}"'"}'
+        comment=$(cat cache_file)
+        echo $comment
+        curl -sS -X POST -H "Authorization: token ${{secrets.GITHUB_TOKEN}}" -H "$app" https://api.github.com/repos/MinsukJi-NOAA/workflow_test/issues/1/comments -d '{"body": "'"${comment}"'"}'
