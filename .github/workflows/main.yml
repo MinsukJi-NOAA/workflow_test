@@ -21,30 +21,30 @@ jobs:
       id: cache-file
       uses: actions/cache@v2
       with:
-        path: cache_file
-        key: auto-comment2
+        path: comment_file
+        key: auto-comment3
 
     - name: generate cache file
       if: steps.cache-file.outputs.cache-hit != 'true'
       run: |
-        printf %s "$comment" >> cache_file
+        printf %s "$comment" > comment_file
         comment="This is extensive commit message\n\n* item 1;\n* item 2;\n* item 3"
 
     - name: use cache
-      run: cat cache_file
+      run: cat comment_file
 
-  job2:
-    name: job 2
-    runs-on: ubuntu-20.04
-    needs: job1
-
-    steps:
-    - name: cache
-      uses: actions/cache@v2
-      with:
-        path: cache_file
-        key: ${{runner.os}}
-
-    - name: use cache in job 2
-      run: |
-        cat cache_file
+#  job2:
+#    name: job 2
+#    runs-on: ubuntu-20.04
+#    needs: job1
+#
+#    steps:
+#    - name: cache
+#      uses: actions/cache@v2
+#      with:
+#        path: cache_file
+#        key: ${{runner.os}}
+#
+#    - name: use cache in job 2
+#      run: |
+#        cat cache_file
