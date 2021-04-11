@@ -25,17 +25,8 @@ jobs:
       uses: actions/cache@v2
       with:
         path: cf
-        key: 20210411-1
+        key: 20210411-3
 
-    - name: set file second time
-      run: echo "Hello world 2nd time" > cf
-
-    - name: cache 2
-      id: cache-file-2
-      uses: actions/cache@v2
-      with:
-        path: cf
-        key: 20210411-2
 
 #    - name: generate cache file
 #      if: steps.cache-file.outputs.cache-hit != 'true'
@@ -52,20 +43,15 @@ jobs:
     needs: job1
 
     steps:
-    - name: cache 1
-      uses: actions/cache@v2
-      with:
-        path: cf
-        key: 20210411-1
+      uses: actions/checkout@v2
 
-    - name: use cache 1
-      run: cat cf
+    - name: set file second time
+      run: echo "Hello world 2nd time" > cf
 
     - name: cache 2
+      id: cache-file-2
       uses: actions/cache@v2
       with:
         path: cf
-        key: 20210411-2
+        key: 20210411-4
 
-    - name: use cache 2
-      run: cat cf
