@@ -19,7 +19,7 @@ jobs:
       uses: actions/cache@v2
       with:
         path: comment_file
-        key: auto-comment3
+        key: auto-comment4
 
     - name: See cache sharing with main
       run: |

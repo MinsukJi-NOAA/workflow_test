@@ -22,13 +22,13 @@ jobs:
       uses: actions/cache@v2
       with:
         path: comment_file
-        key: auto-comment3
+        key: auto-comment4
 
     - name: generate cache file
       if: steps.cache-file.outputs.cache-hit != 'true'
       run: |
-        printf %s "$comment" > comment_file
         comment="This is extensive commit message\n\n* item 1;\n* item 2;\n* item 3"
+        printf %s "$comment" > comment_file
 
     - name: use cache
       run: cat comment_file
