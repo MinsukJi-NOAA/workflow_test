@@ -18,14 +18,14 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: set file first time
-      run: echo "Hello world 1st time" > cf
+      run: echo "Hello world!" > cf
 
     - name: cache 1
       id: cache-file-1
       uses: actions/cache@v2
       with:
         path: cf
-        key: 20210411-3
+        key: test-${{ github.run_id }}
 
 
 #    - name: generate cache file
@@ -36,22 +36,21 @@ jobs:
 #
 #    - name: use cache
 #      run: cat comment_file
-
-  job2:
-    name: job 2
-    runs-on: ubuntu-20.04
-    needs: job1
-
-    steps:
-    - uses: actions/checkout@v2
-
-    - name: set file second time
-      run: echo "Hello world 2nd time" > cf
-
-    - name: cache 2
-      id: cache-file-2
-      uses: actions/cache@v2
-      with:
-        path: cf
-        key: 20210411-4
-
+#
+#  job2:
+#    name: job 2
+#    runs-on: ubuntu-20.04
+#    needs: job1
+#
+#    steps:
+#    - uses: actions/checkout@v2
+#
+#    - name: set file second time
+#      run: echo "Hello world 2nd time" > cf
+#
+#    - name: cache 2
+#      id: cache-file-2
+#      uses: actions/cache@v2
+#      with:
+#        path: cf
+#        key: 20210411-4

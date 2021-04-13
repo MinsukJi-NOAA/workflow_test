@@ -19,19 +19,19 @@ jobs:
       uses: actions/cache@v2
       with:
         path: cf
-        key: 20210411-3
+        key: test-${{ github.event.workflow_run.id }}
 
     - name: use cache 1
       run: cat cf
 
-    - name: cache 2
-      uses: actions/cache@v2
-      with:
-        path: cf
-        key: 20210411-4
-
-    - name: use cache 2
-      run: cat cf
+#    - name: cache 2
+#      uses: actions/cache@v2
+#      with:
+#        path: cf
+#        key: 20210411-4
+#
+#    - name: use cache 2
+#      run: cat cf
 #    - name: See cache sharing with main
 #      run: |
 #        echo "GITHUB_REF is $GITHUB_REF"
