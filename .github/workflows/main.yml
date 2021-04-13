@@ -24,7 +24,7 @@ jobs:
       uses: actions/cache@v2
       with:
         path: cf2
-        key: test-${GITHUB_RUN_ID}
+        key: test-${{ github.run_id }}
 #
 #    - name: use cache
 #      run: cat cf2
@@ -59,7 +59,10 @@ jobs:
 
     steps:
     - name: say hello
-      run: echo "Hello, I am in job 4!"
+      run: |
+        echo ${{ needs.job2.outputs.current }}
+        echo ${{ needs.job3.outputs.cirun }}
+        echo "Hello, I am in job 4!"
 
 
 #    - name: generate cache file
