@@ -38,7 +38,7 @@ jobs:
     steps:
     - name: Set flag
       id: check 
-      run: echo "::set-output name=current::'yes'"
+      run: echo "::set-output name=current::yes"
 
   job3:
     name: job 3
@@ -49,7 +49,7 @@ jobs:
     steps:
     - name: Set flag
       id: check
-      run: echo "::set-output name=cirun::'yes'"
+      run: echo "::set-output name=cirun::yes"
 
   job4:
     name: job 4
