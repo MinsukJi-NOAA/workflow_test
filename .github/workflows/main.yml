@@ -17,16 +17,17 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: set file first time
-      run: echo "Hello world!" > cf
+    - name: wait till aux finishes
+      run: sleep 120
 
-    - name: cache 1
-      id: cache-file-1
+    - name: cache
       uses: actions/cache@v2
       with:
-        path: cf
+        path: cf2
         key: test-${{ github.run_id }}
 
+    - name: use cache
+      run: cat cf2
 
 #    - name: generate cache file
 #      if: steps.cache-file.outputs.cache-hit != 'true'
