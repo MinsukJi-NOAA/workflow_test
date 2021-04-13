@@ -38,7 +38,7 @@ jobs:
     steps:
     - name: Set flag
       id: check 
-      run: echo "::set-output name=current::yes"
+      run: echo "::set-output name=current::no"
 
   job3:
     name: job 3
