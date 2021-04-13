@@ -4,7 +4,7 @@ on:
   workflow_run:
     workflows: ["Main tests"]
     types:
-      - completed
+      - requested
 
 env:
   app: "Accept:application/vnd.github.v3+json"
@@ -15,15 +15,18 @@ jobs:
     runs-on: ubuntu-20.04
 
     steps:
+    - name: set file first time
+      run: echo "Hello world!" >cf2
+
     - name: cache
       uses: actions/cache@v2
       with:
-        path: cf
+        path: cf2
         key: test-${{ github.event.workflow_run.id }}
 
-    - name: use cache 1
-      run: cat cf
-
+#    - name: use cache 1
+#      run: cat cf
+#
 #    - name: cache 2
 #      uses: actions/cache@v2
 #      with:
