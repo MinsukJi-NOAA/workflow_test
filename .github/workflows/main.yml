@@ -24,7 +24,7 @@ jobs:
       uses: actions/cache@v2
       with:
         path: cf2
-        key: test-$GITHUB_RUN_ID
+        key: test-${GITHUB_RUN_ID}
 #
 #    - name: use cache
 #      run: cat cf2
@@ -38,7 +38,7 @@ jobs:
     steps:
     - name: Set flag
       id: check 
-      run: echo "::set-output name=current::'yes'"
+      run: echo "::set-output name=current::'no'"
 
   job3:
     name: job 3
