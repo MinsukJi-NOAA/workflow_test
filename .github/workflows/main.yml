@@ -25,9 +25,12 @@ jobs:
       with:
         path: cf2
         key: test-${{ github.run_id }}
-#
-#    - name: use cache
-#      run: cat cf2
+
+    - name: use cache
+      run: |
+        pwd
+        ls -alF
+        cat cf2
 
   job2:
     name: job 2
